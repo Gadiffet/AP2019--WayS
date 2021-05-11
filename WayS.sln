@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayS", "WayS\WayS.csproj", "{09917EEF-E118-4811-A20B-27F67D9A5194}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayS", "WayS\WayS.csproj", "{44493DAE-9810-4F99-8FDD-FECA403BF05D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09917EEF-E118-4811-A20B-27F67D9A5194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09917EEF-E118-4811-A20B-27F67D9A5194}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09917EEF-E118-4811-A20B-27F67D9A5194}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09917EEF-E118-4811-A20B-27F67D9A5194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44493DAE-9810-4F99-8FDD-FECA403BF05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44493DAE-9810-4F99-8FDD-FECA403BF05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44493DAE-9810-4F99-8FDD-FECA403BF05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44493DAE-9810-4F99-8FDD-FECA403BF05D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4DCAD46-4FD1-44BC-BA93-58F9418150C8}
 	EndGlobalSection
 EndGlobal
