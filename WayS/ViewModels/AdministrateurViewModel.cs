@@ -23,8 +23,7 @@ namespace WayS.ViewModels
             {
                 administrateur.Login = value;
                 RaisePropertyChanged();
-            }
-                
+            }                
         }
 
         public string Mdp
@@ -35,7 +34,6 @@ namespace WayS.ViewModels
                 administrateur.Mdp = value;
                 RaisePropertyChanged();
             }
-
         }
 
         public Administrateur Administrateur

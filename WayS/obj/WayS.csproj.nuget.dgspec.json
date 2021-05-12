@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gadiffet\\source\\repos\\WayS\\WayS\\WayS.csproj": {}
+    "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\WayS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gadiffet\\source\\repos\\WayS\\WayS\\WayS.csproj": {
+    "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\WayS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gadiffet\\source\\repos\\WayS\\WayS\\WayS.csproj",
+        "projectUniqueName": "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\WayS.csproj",
         "projectName": "WayS",
-        "projectPath": "C:\\Users\\gadiffet\\source\\repos\\WayS\\WayS\\WayS.csproj",
+        "projectPath": "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\WayS.csproj",
         "packagesPath": "C:\\Users\\gadiffet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gadiffet\\source\\repos\\WayS\\WayS\\obj\\",
+        "outputPath": "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gadiffet\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -67,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
