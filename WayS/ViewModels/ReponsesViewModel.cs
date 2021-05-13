@@ -87,7 +87,7 @@ namespace WayS.ViewModels
             ModifReponse = new RelayCommand(ModifierReponse);
         }
 
-        private void AjouterCandidat()
+        private void AjouterReponse()
         {
             reponsesRepository = new ReponsesRepository();
             reponsesRepository.Create(reponses);
@@ -98,7 +98,7 @@ namespace WayS.ViewModels
             }
         }
 
-        private void SupprimerCandidat()
+        private void SupprimerReponse()
         {
             reponsesRepository = new ReponsesRepository();
             reponsesRepository.Delete(reponses);
@@ -108,7 +108,7 @@ namespace WayS.ViewModels
             }
         }
 
-        private void ModifierCandidat()
+        private void ModifierReponse()
         {
             reponsesRepository = new ReponsesRepository();
             reponsesRepository.Update(reponses);

@@ -76,9 +76,9 @@ namespace WayS.Repositories
         }
 
         // TODO REPONSE
-        public Question FindById(int idQuestion)
+        public QuestionOrientation FindById(int idQuestion)
         {
-            Question questionOrientation = null;
+            QuestionOrientation questionOrientation = null;
             request = "SELECT a.idQuestion, a.questionText, b.reponse from Question a left join Reponse b where a.idQuestion = b.idQuestion = @idQuestion";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
