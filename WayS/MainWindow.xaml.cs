@@ -1,6 +1,4 @@
-﻿using WayS.ViewModels;
-using WayS.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +24,15 @@ namespace WayS
         {
             InitializeComponent();
         }
+    }
+
+    private void EnterPseudo_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+            // your event handler here
+            e.Handled = true;
+            MessageBox.Show("Enter pressed");
+            Page testpage = new Page();
+
     }
 }

@@ -16,7 +16,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -24,10 +24,11 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                            <Setter Property="Background" Value="Red"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
+
             </Button.Style>
         </Button>
         <Button Height="920" Width="640" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#EBE6E4" RenderTransformOrigin="-8.147,1.457" Margin="640,0,0,0"/>
