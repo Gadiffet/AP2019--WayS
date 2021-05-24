@@ -1,12 +1,8 @@
-﻿using WayS.Interfaces;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace WayS.Repositories
 {
@@ -18,7 +14,6 @@ namespace WayS.Repositories
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
-            command.Parameters.Add(new SqlParameter("@reponsesQuestion", element.ReponsesQuestion));
             connection.Open();
             element.IdQuestion = (int)command.ExecuteScalar();
             command.Dispose();
@@ -43,7 +38,6 @@ namespace WayS.Repositories
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@idQuestion", element.IdQuestion));
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
-            command.Parameters.Add(new SqlParameter("@reponsesQuestion", element.ReponsesQuestion));
             connection.Open();
             command.Dispose();
             connection.Close();
@@ -52,7 +46,7 @@ namespace WayS.Repositories
         public List<Question> Listing()
         {
             List<Question> question = new List<Question>();
-            request = "SELECT idQuestion, questionText from Question";
+            request = "SELECT idQuestion, questionText, position from question";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             connection.Open();
@@ -72,11 +66,10 @@ namespace WayS.Repositories
             return question;
         }
 
-        // TODO REPONSE
         public Question FindById(int idQuestion)
         {
             Question question = null;
-            request = "SELECT a.idQuestion, a.questionText, b.reponse from Question a left join Reponse b where a.idQuestion = b.idQuestion = @idQuestion";
+            request = "SELECT idQuestion, questionText, position from question where idQuestion = @idQuestion";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@idQuestion", idQuestion));

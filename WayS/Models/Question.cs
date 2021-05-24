@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WayS.Models
+﻿namespace WayS.Models
 {
     class Question
     {
         private int idQuestion;
         private string questionText;
-        private List<Reponses> reponsesQuestion;
+        private int position;
 
-        public int IdQuestion { 
+        public int IdQuestion
+        {
             get => idQuestion;
-            set => idQuestion = value; 
+            set => idQuestion = value;
         }
 
         public string QuestionText
@@ -23,15 +18,21 @@ namespace WayS.Models
             set => questionText = value;
         }
 
-        public List<Reponses> ReponsesQuestion
+        public int Position
         {
-            get => reponsesQuestion;
-            set => reponsesQuestion = value;
+            get => position;
+            set => position = value;
         }
 
         public Question()
         {
-            ReponsesQuestion = new List<Reponses>();
+
+        }
+
+        protected Question(string questionText, int position)
+        {
+            QuestionText = questionText;
+            Position = position;
         }
     }
 }

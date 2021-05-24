@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GalaSoft.MvvmLight.Threading;
 using System.Windows;
 
 namespace WayS
@@ -13,5 +8,9 @@ namespace WayS
     /// </summary>
     public partial class App : Application
     {
+        static App()
+        {
+            DispatcherHelper.Initialize();
+        }
     }
 }

@@ -1,10 +1,8 @@
-﻿using WayS.Interfaces;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
 
 namespace WayS.Repositories
 {

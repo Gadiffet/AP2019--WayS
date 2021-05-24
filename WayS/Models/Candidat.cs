@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WayS.Models
+﻿namespace WayS.Models
 {
     class Candidat
     {
@@ -57,6 +51,15 @@ namespace WayS.Models
         {
             get => hobby;
             set => hobby = value;
+        }
+
+        public Candidat()
+        {
+        }
+
+        public Candidat(string pseudo)
+        {
+            Pseudo = pseudo;
         }
     }
 }

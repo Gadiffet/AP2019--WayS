@@ -1,16 +1,12 @@
-﻿using WayS.Interfaces;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace WayS.Repositories
 {
-    class ReponsesRepository : BaseRepository, IRepository<Reponses>
+    class ReponsesRepository : BaseRepository, IReponse<Reponses>
     {
         public void Create(Reponses element)
         {
@@ -52,12 +48,13 @@ namespace WayS.Repositories
             connection.Close();
         }
 
-        public List<Reponses> Listing()
+        public List<Reponses> Listing(int idQuestion)
         {
             List<Reponses> reponses = new List<Reponses>();
-            request = "SELECT id, idQuestion, reponse, correct, nbrPoints from Reponses";
+            request = "SELECT idReponse, idQuestion, reponse, correct, nbrPoints from reponse where idQuestion=@idQuestion";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@idQuestion", idQuestion));
             connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())

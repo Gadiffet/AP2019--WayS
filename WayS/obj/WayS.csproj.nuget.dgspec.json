@@ -40,6 +40,10 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
+            "CommonServiceLocator": {
+              "target": "Package",
+              "version": "[2.0.6, )"
+            },
             "MvvmLightLibs": {
               "target": "Package",
               "version": "[5.4.1.1, )"
@@ -67,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

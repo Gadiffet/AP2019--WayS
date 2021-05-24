@@ -1,13 +1,8 @@
-﻿using WayS.Interfaces;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
 
 namespace WayS.ViewModels
 {
@@ -23,7 +18,7 @@ namespace WayS.ViewModels
             {
                 administrateur.Login = value;
                 RaisePropertyChanged();
-            }                
+            }
         }
 
         public string Mdp
@@ -61,33 +56,33 @@ namespace WayS.ViewModels
         private void ConnexionAdmin()
         {
             administrateurRepository = new AdministrateurRepository();
-            Administrateur administrateur = administrateurRepository.FindByLogin(Login);            
+            Administrateur administrateur = administrateurRepository.FindByLogin(Login);
         }
 
 
-/*        public Question ModifierReponse(Question question)
-        {
-            return null;
-        }
+        /*        public Question ModifierReponse(Question question)
+                {
+                    return null;
+                }
 
-        public Question SupprimerReponse(Question question)
-        {
-            return null;
-        }
+                public Question SupprimerReponse(Question question)
+                {
+                    return null;
+                }
 
-        public Classement ModifierPointsPseudo(Classement classement)
-        {
-            return null;
-        }
+                public Classement ModifierPointsPseudo(Classement classement)
+                {
+                    return null;
+                }
 
-        public Classement ModifierPseudo(Classement classement)
-        {
-            return null;
-        }
+                public Classement ModifierPseudo(Classement classement)
+                {
+                    return null;
+                }
 
-        public Classement SupprimerPseudo(Classement classement)
-        {
-            return null;
-        }*/
+                public Classement SupprimerPseudo(Classement classement)
+                {
+                    return null;
+                }*/
     }
 }

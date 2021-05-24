@@ -4,34 +4,26 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS"
-      mc:Ignorable="d" 
-      d:DesignHeight="920" d:DesignWidth="1280"
-      Title="Menu">
+      mc:Ignorable="d"
+      Title="Menu" Height="920" Width="1280" DataContext="{Binding  MenuPageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
-        <Button Height="920" Width="640" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#EBE6E4" RenderTransformOrigin="-8.147,1.457">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="Green"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="Red"/>
-                        </Trigger>
-                    </Style.Triggers>
+        <Button Command="{Binding NavigateCommand}" CommandParameter="orientation" Height="920" Width="640" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#EBE6E4" RenderTransformOrigin="-8.147,1.457"/>
+        <TextBox Text="ORIENTATION" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="70,422,710,422">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="30"/>
                 </Style>
-
-            </Button.Style>
-        </Button>
-        <Button Height="920" Width="640" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#EBE6E4" RenderTransformOrigin="-8.147,1.457" Margin="640,0,0,0"/>
+            </TextBox.Resources>
+        </TextBox>
+        <Button Command="{Binding NavigateCommand}" CommandParameter="jeu" Height="920" Width="640" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#EBE6E4" RenderTransformOrigin="-8.147,1.457" Margin="640,0,0,0"/>
+        <TextBox Text="JEU" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="710,422,70,422">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Rectangle Height="920" Width="3" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
     </Grid>
 </Page>

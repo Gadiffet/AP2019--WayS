@@ -1,12 +1,8 @@
-﻿using WayS.Interfaces;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace WayS.Repositories
 {
@@ -15,6 +11,7 @@ namespace WayS.Repositories
         public void Create(Candidat element)
         {
             request = "INSERT INTO Candidat (pseudo, score, age, niveau, experience, localisation, hobby) OUTPUT inserted.id values (@pseudo, @score, @age, @niveau, @experience, @localisation, @hobby)";
+            request = "INSERT INTO Candidat (pseudo) OUTPUT inserted.idCandidat values (@pseudo)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));

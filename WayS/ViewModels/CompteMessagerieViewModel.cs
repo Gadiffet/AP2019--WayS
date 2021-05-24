@@ -1,13 +1,8 @@
-﻿using WayS.Interfaces;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
 
 namespace WayS.ViewModels
 {
@@ -43,7 +38,7 @@ namespace WayS.ViewModels
             set
             {
                 compteMessagerie = value;
-                if(compteMessagerie != null)
+                if (compteMessagerie != null)
                 {
                     RaisePropertyChanged("AdressMail");
                     RaisePropertyChanged("Message");
@@ -64,7 +59,7 @@ namespace WayS.ViewModels
         private void ModifierCompteMessagerie()
         {
             compteMessagerieRepository = new CompteMessagerieRepository();
-            if(CompteMessagerie.Id > 0)
+            if (CompteMessagerie.Id > 0)
             {
                 compteMessagerieRepository.Update(CompteMessagerie);
             }

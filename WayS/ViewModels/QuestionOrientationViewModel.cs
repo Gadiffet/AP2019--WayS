@@ -1,13 +1,10 @@
-﻿using WayS.Interfaces;
-using WayS.Models;
-using WayS.Repositories;
-using GalaSoft.MvvmLight;
+﻿/*using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
+using WayS.Models;
+using WayS.Repositories;
 
 namespace WayS.ViewModels
 {
@@ -111,3 +108,4 @@ namespace WayS.ViewModels
         }
     }
 }
+*/

@@ -1,16 +1,12 @@
-﻿using WayS.Interfaces;
+﻿/*using System.Collections.Generic;
+using System.Data.SqlClient;
+using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace WayS.Repositories
 {
-    class QuestionOrientationRepository : BaseRepository, IRepository<QuestionOrientation> 
+    class QuestionOrientationRepository : BaseRepository, IRepository<QuestionOrientation>
     {
         public void Create(QuestionOrientation element)
         {
@@ -101,3 +97,4 @@ namespace WayS.Repositories
         }
     }
 }
+*/

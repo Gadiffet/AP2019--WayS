@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "s32cArIc50bSh2b6UHrKOi2dOn/BsSSYPBveymJtEFKsHulKqpfW9iCZcxAz+y4qhyye6Dsczzwbkl2l2tIeJA==",
+  "dgSpecHash": "dO5LMGK6kfMdVphEg81G2P0VQu/5mugVPhIybycTJanDEepnqLr+tueSE5mlNC/ndaSeXuHdgRFHydyKnxJTcw==",
   "success": true,
   "projectFilePath": "C:\\Users\\gadiffet\\source\\repos\\AP2019--WayS\\WayS\\WayS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gadiffet\\.nuget\\packages\\commonservicelocator\\2.0.6\\commonservicelocator.2.0.6.nupkg.sha512",
     "C:\\Users\\gadiffet\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\gadiffet\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\gadiffet\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
