@@ -75,6 +75,33 @@ namespace WayS.Repositories
             return reponses;
         }
 
+        public List<Reponses> ListingOrientation(int idQuestion)
+        {
+            List<Reponses> reponses = new List<Reponses>();
+            request = "SELECT idReponseOrientation, idQuestionOrientation, reponse, correct, nbrPoints from reponseOrientation where idQuestionOrientation=@idQuestionOrientation";
+            connection = Connection.New;
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@idQuestionOrientation", idQuestion));
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Reponses c = new Reponses()
+                {
+                    Id = reader.GetInt32(0),
+                    IdQuestion = reader.GetInt32(1),
+                    Reponse = reader.GetString(2),
+                    Correct = reader.GetBoolean(3),
+                    NbrPoints = reader.GetInt32(4)
+                };
+                reponses.Add(c);
+            }
+            reader.Close();
+            command.Dispose();
+            connection.Close();
+            return reponses;
+        }
+
         public Reponses FindById(int id)
         {
             Reponses reponses = null;

@@ -1,0 +1,23 @@
+﻿<Page x:Class="WayS.Views.QuestionOrientationView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WayS.Views"
+      mc:Ignorable="d" 
+      Title="QuestionOrientationView" Height="920" Width="1280" DataContext="{Binding OrientationPageInstance,Source={StaticResource Locator}}">
+
+    <Grid Background="#FFEBE6E4">
+        <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
+        <TextBlock Text="Question" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
+        <TextBlock Text="{Binding QuestionOrientation.IdQuestion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="362,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
+        <TextBlock Text="{Binding QuestionOrientation.QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="36" FontWeight="Bold" Foreground="#1A130F"/>
+        <ItemsControl ItemsSource="{Binding ListReponses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,434,0,0" RenderTransformOrigin="0.542,0.265">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Reponse, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OrientationPageInstance.AnswerQuestionCommand,Source={StaticResource Locator}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>

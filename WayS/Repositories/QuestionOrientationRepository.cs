@@ -1,4 +1,4 @@
-﻿/*using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using WayS.Interfaces;
 using WayS.Models;
@@ -14,7 +14,6 @@ namespace WayS.Repositories
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
-            command.Parameters.Add(new SqlParameter("@reponsesQuestion", element.ReponsesQuestion));
             command.Parameters.Add(new SqlParameter("@bareme", element.Bareme));
             connection.Open();
             element.IdQuestion = (int)command.ExecuteScalar();
@@ -40,7 +39,6 @@ namespace WayS.Repositories
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@idQuestion", element.IdQuestion));
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
-            command.Parameters.Add(new SqlParameter("@reponsesQuestion", element.ReponsesQuestion));
             command.Parameters.Add(new SqlParameter("@bareme", element.Bareme));
             connection.Open();
             command.Dispose();
@@ -50,7 +48,7 @@ namespace WayS.Repositories
         public List<QuestionOrientation> Listing()
         {
             List<QuestionOrientation> questionOrientation = new List<QuestionOrientation>();
-            request = "SELECT idQuestion, questionText, bareme from Question";
+            request = "SELECT idQuestionOrientation, questionText, bareme, position from questionOrientation";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             connection.Open();
@@ -61,7 +59,8 @@ namespace WayS.Repositories
                 {
                     IdQuestion = reader.GetInt32(0),
                     QuestionText = reader.GetString(1),
-                    Bareme = reader.GetString(2)
+                    Bareme = reader.GetString(2),
+                    Position = reader.GetInt32(3)
                 };
                 questionOrientation.Add(c);
             }
@@ -71,7 +70,32 @@ namespace WayS.Repositories
             return questionOrientation;
         }
 
-        // TODO REPONSE
+        public List<QuestionOrientation> FindByQuestionText(string questionText)
+        {
+            List<QuestionOrientation> questionOrientation = new List<QuestionOrientation>();
+            request = "SELECT idQuestionOrientation, questionText, bareme, position from questionOrientation where questionText=@questionText";
+            connection = Connection.New;
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@questionText", questionText));
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                QuestionOrientation c = new QuestionOrientation()
+                {
+                    IdQuestion = reader.GetInt32(0),
+                    QuestionText = reader.GetString(1),
+                    Bareme = reader.GetString(2),
+                    Position = reader.GetInt32(3)
+                };
+                questionOrientation.Add(c);
+            }
+            reader.Close();
+            command.Dispose();
+            connection.Close();
+            return questionOrientation;
+        }
+
         public QuestionOrientation FindById(int idQuestion)
         {
             QuestionOrientation questionOrientation = null;
@@ -97,4 +121,3 @@ namespace WayS.Repositories
         }
     }
 }
-*/

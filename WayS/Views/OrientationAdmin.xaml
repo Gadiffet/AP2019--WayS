@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="OrientationAdmin" Height="920" Width="1280">
+      Title="OrientationAdmin" Height="920" Width="1280" DataContext="{Binding OrientationAdminPageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
@@ -24,6 +24,17 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
+        <ItemsControl ItemsSource="{Binding ListQuestions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,361,0,0" RenderTransformOrigin="0.542,0.265">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Width="1200">
+                        <Button Content="{Binding QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OrientationAdminPageInstance.ModifyQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
+                        <Button Content="Modifer" Command="{Binding OrientationAdminPageInstance.ModifyQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                        <Button Content="Supprimer" Command="{Binding OrientationAdminPageInstance.DeleteQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="3,860,0,0" RenderTransformOrigin="0.5,0.5" >
             <Path.RenderTransform>
                 <TransformGroup>

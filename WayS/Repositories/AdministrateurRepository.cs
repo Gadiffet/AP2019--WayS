@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using WayS.Interfaces;
 using WayS.Models;
 using WayS.Tools;
@@ -7,10 +8,10 @@ namespace WayS.Repositories
 {
     class AdministrateurRepository : BaseRepository, IAdministrateur<Administrateur>
     {
-        public Administrateur FindByLogin(string login)
+        public List<Administrateur> FindByLogin(string login)
         {
-            Administrateur administrateur = null;
-            request = "SELECT login, mdp from administrateur where login = @login";
+            List<Administrateur> administrateur = new List<Administrateur>();
+            request = "SELECT login, mdp from admin where login=@login";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@login", login));
@@ -18,12 +19,12 @@ namespace WayS.Repositories
             reader = command.ExecuteReader();
             if (reader.Read())
             {
-                administrateur = new Administrateur()
+                Administrateur c = new Administrateur()
                 {
-                    Login = reader.GetString(1),
-                    Mdp = reader.GetString(2)
+                    Login = reader.GetString(0),
+                    Mdp = reader.GetString(1)
                 };
-
+                administrateur.Add(c);
             }
             reader.Close();
             command.Dispose();

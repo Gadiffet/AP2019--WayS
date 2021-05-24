@@ -56,7 +56,7 @@ namespace WayS.ViewModels
         private void ConnexionAdmin()
         {
             administrateurRepository = new AdministrateurRepository();
-            Administrateur administrateur = administrateurRepository.FindByLogin(Login);
+/*            Administrateur administrateur = administrateurRepository.FindByLogin(Login);*/
         }
 
 

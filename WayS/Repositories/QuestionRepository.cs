@@ -56,7 +56,8 @@ namespace WayS.Repositories
                 Question c = new Question()
                 {
                     IdQuestion = reader.GetInt32(0),
-                    QuestionText = reader.GetString(1)
+                    QuestionText = reader.GetString(1),
+                    Position = reader.GetInt32(2)
                 };
                 question.Add(c);
             }

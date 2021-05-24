@@ -1,56 +1,33 @@
-﻿/*using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
+using WayS.Services;
+using WayS.Views;
 
 namespace WayS.ViewModels
 {
     class QuestionOrientationViewModel : ViewModelBase
     {
+        private IFrameNavigationService _navigationService;
+
         private QuestionOrientation questionOrientation;
+        private Reponses reponseQuestion;
         private QuestionOrientationRepository questionOrientationRepository;
+        private ReponsesRepository reponsesRepository;
+        private List<QuestionOrientation> listQuestions;
+        private List<Reponses> listReponses;
 
-        public int IdQuestion
-        {
-            get => questionOrientation.IdQuestion;
-            set
-            {
-                questionOrientation.IdQuestion = value;
-                RaisePropertyChanged();
-            }
-        }
+        private int idQuestion;
+        private int maxQuestion;
 
-        public string QuestionText
+        public List<QuestionOrientation> ListQuestions
         {
-            get => questionOrientation.QuestionText;
-            set
-            {
-                questionOrientation.QuestionText = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public string Bareme
-        {
-            get => questionOrientation.Bareme;
-            set
-            {
-                questionOrientation.Bareme = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public List<Reponses> ReponsesQuestion
-        {
-            get => questionOrientation.ReponsesQuestion;
-            set
-            {
-                questionOrientation.ReponsesQuestion = value;
-                RaisePropertyChanged();
-            }
+            get => listQuestions;
+            set => listQuestions = value;
         }
 
         public QuestionOrientation QuestionOrientation
@@ -61,51 +38,105 @@ namespace WayS.ViewModels
                 questionOrientation = value;
                 if (questionOrientation != null)
                 {
-                    RaisePropertyChanged("IdQuestion");
                     RaisePropertyChanged("QuestionText");
-                    RaisePropertyChanged("Bareme");
-                    RaisePropertyChanged("ReponsesQuestion");
+                }
+            }
+        }
+        public List<Reponses> ListReponses
+        {
+            get => listReponses;
+            set => listReponses = value;
+        }
+
+        public Reponses Reponses
+        {
+            get => reponseQuestion;
+            set
+            {
+                reponseQuestion = value;
+                if (reponseQuestion != null)
+                {
+                    RaisePropertyChanged("QuestionText");
                 }
             }
         }
 
-        public ICommand AjoutQuestion { get; set; }
-        public ICommand SuppQuestion { get; set; }
-        public ICommand ModifQuestion { get; set; }
-        public ICommand ModifOrdreQuestion { get; set; }
-        public ICommand ListQuestion { get; set; }
-        public ObservableCollection<Reponses> ReponseQuestion { get; set; }
-        public ObservableCollection<QuestionOrientation> QuestionsOrientations { get; set; }
+        public ICommand AnswerQuestionCommand { get; set; }
 
-        public QuestionOrientationViewModel()
+        public QuestionOrientationViewModel(IFrameNavigationService navigationService)
         {
-            questionOrientation = new QuestionOrientation();
+            AnswerQuestionCommand = new RelayCommand(ActionAnswer);
+
+            _navigationService = navigationService;
+            QuestionOrientation = new QuestionOrientation();
             questionOrientationRepository = new QuestionOrientationRepository();
-            QuestionsOrientations = new ObservableCollection<QuestionOrientation>(questionOrientationRepository.Listing());
-            AjoutQuestion = new RelayCommand(AjouterQuestion);
-            SuppQuestion = new RelayCommand(SupprimerQuestion);
+            reponseQuestion = new Reponses();
+            reponsesRepository = new ReponsesRepository();
+
+            listQuestions = new List<QuestionOrientation>(questionOrientationRepository.Listing());
+            questionOrientation = listQuestions[5];
+
+            idQuestion = QuestionOrientation.IdQuestion;
+            listReponses = new List<Reponses>(reponsesRepository.ListingOrientation(idQuestion));
         }
 
-        private void AjouterQuestion()
+        private void ActionAnswer()
         {
-            questionOrientationRepository = new QuestionOrientationRepository();
-            questionOrientationRepository.Create(questionOrientation);
-            if (QuestionOrientation.IdQuestion > 0)
+            maxQuestion = listQuestions.Count;
+            idQuestion = QuestionOrientation.IdQuestion;
+            listReponses = new List<Reponses>(reponsesRepository.ListingOrientation(idQuestion + 1));
+
+            if (maxQuestion >= QuestionOrientation.IdQuestion + 1)
             {
-                QuestionsOrientations.Add(QuestionOrientation);
-                QuestionOrientation = new QuestionOrientation();
+                QuestionOrientation questionSuivante = null;
+                questionSuivante = listQuestions[QuestionOrientation.IdQuestion];
+                QuestionOrientation = questionSuivante;
+
+                MessageBox.Show(QuestionOrientation.QuestionText.ToString());
+            }
+            else
+            {
+                _navigationService.NavigateTo(nameof(ResultatOrientation));
             }
         }
 
-        public void SupprimerQuestion()
-        {
-            questionOrientationRepository = new QuestionOrientationRepository();
-            questionOrientationRepository.Delete(questionOrientation);
-            if (QuestionOrientation.IdQuestion > 0)
-            {
-                QuestionsOrientations.Remove(QuestionOrientation);
-            }
-        }
+
+        /*        public ICommand AjoutQuestion { get; set; }
+                public ICommand SuppQuestion { get; set; }
+                public ICommand ModifQuestion { get; set; }
+                public ICommand ModifOrdreQuestion { get; set; }
+                public ICommand ListQuestion { get; set; }
+                public ObservableCollection<Reponses> ReponseQuestion { get; set; }
+                public ObservableCollection<QuestionOrientation> QuestionsOrientations { get; set; }
+
+                public QuestionOrientationViewModel()
+                {
+                    questionOrientation = new QuestionOrientation();
+                    questionOrientationRepository = new QuestionOrientationRepository();
+                    QuestionsOrientations = new ObservableCollection<QuestionOrientation>(questionOrientationRepository.Listing());
+                    AjoutQuestion = new RelayCommand(AjouterQuestion);
+                    SuppQuestion = new RelayCommand(SupprimerQuestion);
+                }
+
+                private void AjouterQuestion()
+                {
+                    questionOrientationRepository = new QuestionOrientationRepository();
+                    questionOrientationRepository.Create(questionOrientation);
+                    if (QuestionOrientation.IdQuestion > 0)
+                    {
+                        QuestionsOrientations.Add(QuestionOrientation);
+                        QuestionOrientation = new QuestionOrientation();
+                    }
+                }
+
+                public void SupprimerQuestion()
+                {
+                    questionOrientationRepository = new QuestionOrientationRepository();
+                    questionOrientationRepository.Delete(questionOrientation);
+                    if (QuestionOrientation.IdQuestion > 0)
+                    {
+                        QuestionsOrientations.Remove(QuestionOrientation);
+                    }
+                }*/
     }
 }
-*/

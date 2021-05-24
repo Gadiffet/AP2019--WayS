@@ -5,27 +5,54 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="Login" Height="920" Width="1280">
+      Title="Login" Height="920" Width="1280" DataContext="{Binding LoginPageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,240,0,0" FontSize="64" FontWeight="Bold">LOGIN</TextBlock>
-        <TextBox Text="USERNAME" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,385,390,460">
+        <TextBox x:Name="SearchTermTextBox" Text="{Binding Login}" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,385,390,460">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="30"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Text="PASSWORD" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,500,390,345">
+        <TextBlock IsHitTestVisible="False" Text="LOGIN" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="45" Margin="0,393,0,0" Foreground="#00A390">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox x:Name="SearchTermTextBox2" Text="{Binding Mdp}" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,500,390,345">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="30"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button Height="75" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="515,670,515,175">LOGIN</Button>
+        <TextBlock IsHitTestVisible="False" Text="MOT DE PASSE" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="45" Margin="0,508,0,0" Foreground="#00A390">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox2}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button Content="START" Command="{Binding NavigateCommand}" Height="75" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="515,670,515,175"/>
         <Button HorizontalAlignment="Right" Margin="0,2,0,12" Name="DeleteButton" Width="25" BorderThickness="0" FlowDirection="LeftToRight" Grid.IsSharedSizeScope="False" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Padding="0" VerticalAlignment="Center"/>
         <Grid Margin="1242,12,12,882">
+            <Grid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding NavigateCommand}" />
+            </Grid.InputBindings>
             <Line Stroke="#1A130F" StrokeThickness="2" X1="0"  X2="25" Y1="0" Y2="25"/>
             <Line Stroke="#1A130F" StrokeThickness="2" X1="0" X2="25" Y1="25" Y2="0"/>
         </Grid>

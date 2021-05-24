@@ -33,7 +33,7 @@
             </TextBox.Resources>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,890,0,0" FontSize="18" FontWeight="Bold" Foreground="#1A130F"><Run Text="* AUCUNES"/><Run Text=" IDENTITE"/><Run Language="fr-fr" Text="S"/><Run Text=" N'EST CONCERVE"/></TextBlock>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
+        <Button Command="{Binding NavigateCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="1191,860,0,0" />
     </Grid>
 </Page>

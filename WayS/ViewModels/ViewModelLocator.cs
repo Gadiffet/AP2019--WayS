@@ -21,6 +21,13 @@ namespace WayS.ViewModels
             SimpleIoc.Default.Register<AccueilViewModel>();
             SimpleIoc.Default.Register<MenuViewModel>();
             SimpleIoc.Default.Register<JeuViewModel>();
+            SimpleIoc.Default.Register<QuestionMieuxVousConnaitreViewModel>();
+            SimpleIoc.Default.Register<QuestionOrientationViewModel>();
+            SimpleIoc.Default.Register<ResultatOrientationViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<MenuAdminViewModel>();
+            SimpleIoc.Default.Register<OrientationAdminViewModel>();
+            SimpleIoc.Default.Register<ModifierOrientationViewModel>();
         }
 
         private static void SetupNavigation()
@@ -30,6 +37,12 @@ namespace WayS.ViewModels
             navigationService.Configure(nameof(Menu), new Uri("../Views/Menu.xaml", UriKind.Relative));
             navigationService.Configure(nameof(QuestionJeu), new Uri("../Views/QuestionJeu.xaml", UriKind.Relative));
             navigationService.Configure(nameof(MieuxVousConnaitre), new Uri("../Views/MieuxVousConnaitre.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(QuestionOrientationView), new Uri("../Views/QuestionOrientationView.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(ResultatOrientation), new Uri("../Views/ResultatOrientation.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(Login), new Uri("../Views/Login.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(MenuAdmin), new Uri("../Views/MenuAdmin.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(OrientationAdmin), new Uri("../Views/OrientationAdmin.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(ModiferOrientation), new Uri("../Views/ModiferOrientation.xaml", UriKind.Relative));
 
             SimpleIoc.Default.Register<IFrameNavigationService>(() => navigationService);
         }
@@ -77,6 +90,54 @@ namespace WayS.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<QuestionMieuxVousConnaitreViewModel>();
+            }
+        }
+
+        public QuestionOrientationViewModel OrientationPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<QuestionOrientationViewModel>();
+            }
+        }
+
+        public ResultatOrientationViewModel ResultatOrientationPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ResultatOrientationViewModel>();
+            }
+        }
+
+        public LoginViewModel LoginPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LoginViewModel>();
+            }
+        }
+
+        public MenuAdminViewModel MenuAdminPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MenuAdminViewModel>();
+            }
+        }
+
+        public OrientationAdminViewModel OrientationAdminPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<OrientationAdminViewModel>();
+            }
+        }
+
+        public ModifierOrientationViewModel ModifierOrientationPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ModifierOrientationViewModel>();
             }
         }
 

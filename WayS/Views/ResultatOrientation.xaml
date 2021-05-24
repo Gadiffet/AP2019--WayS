@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="ResultatOrientation" Height="920" Width="1280">
+      Title="ResultatOrientation" Height="920" Width="1280" DataContext="{Binding  ResultatOrientationPageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <TextBlock Text="VOUS AVEZ UN PROFIL" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" FontSize="36" FontWeight="Bold" Foreground="#00A390"/>
-        <TextBlock Text="{Binding TitreProfile}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,210,0,0" FontSize="64" FontWeight="Bold" Foreground="#1A130F"/>
-        <TextBlock Text="{Binding TitreFormation}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0" FontSize="24" FontWeight="Bold" Foreground="#99918D"/>
-        <TextBlock Text="{Binding DescriptionProfile}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,380,0,0" FontSize="18" FontWeight="Bold" Foreground="#1A130F"/>
+        <TextBlock Text="{Binding Bareme.BaremeTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,210,0,0" FontSize="64" FontWeight="Bold" Foreground="#1A130F"/>
+        <TextBlock Text="{Binding Bareme.FormationTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0" FontSize="24" FontWeight="Bold" Foreground="#99918D"/>
+        <TextBlock Text="{Binding Bareme.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,380,0,0" FontSize="18" Width="1000" Height="200" FontWeight="Bold" Foreground="#1A130F"/>
         <TextBlock Text="RECEVOIR UN RESUME ET PLUS D'INFORMATION" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,575,0,0" FontSize="18" FontWeight="Bold" Foreground="#1A130F"/>
         <TextBox Text="ENTREZ VOTRE MAIL" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,615,390,228">
             <TextBox.Resources>
@@ -21,7 +21,7 @@
             </TextBox.Resources>
         </TextBox>
         <TextBlock Text="* AUCUNES INFORMATIONS N'EST CONCERVE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,890,0,0" FontSize="18" FontWeight="Bold" Foreground="#1A130F"/>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
+        <Button Command="{Binding NavigateCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="1191,860,0,0" />
     </Grid>
 </Page>

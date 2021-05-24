@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\gadiffet\source\repos\AP2019--WayS\WayS\App.xaml
-15748464299
+16-107489143
 
-521650759071
+61361223349
 199768001088
-MainWindow.xaml;Views\Accueil.xaml;Views\Classement.xaml;Views\CompteMessagerieMenu.xaml;Views\JeuAdmin.xaml;Views\Login.xaml;Views\Menu.xaml;Views\MenuAdmin.xaml;Views\MieuxVousConnaitre.xaml;Views\MieuxVousConnaitreAdmin.xaml;Views\OrientationAdmin.xaml;Views\QuestionJeu.xaml;Views\QuestionOrientation.xaml;Views\ResultatJeu.xaml;Views\ResultatOrientation.xaml;
+MainWindow.xaml;Views\Accueil.xaml;Views\Classement.xaml;Views\CompteMessagerieMenu.xaml;Views\JeuAdmin.xaml;Views\Login.xaml;Views\Menu.xaml;Views\MenuAdmin.xaml;Views\MieuxVousConnaitre.xaml;Views\MieuxVousConnaitreAdmin.xaml;Views\ModiferOrientation.xaml;Views\OrientationAdmin.xaml;Views\QuestionJeu.xaml;Views\QuestionOrientationView.xaml;Views\ResultatJeu.xaml;Views\ResultatOrientation.xaml;
 
 False
 

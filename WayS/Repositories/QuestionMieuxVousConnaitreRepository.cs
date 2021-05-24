@@ -56,7 +56,8 @@ namespace WayS.Repositories
                 QuestionMieuxVousConnaitre c = new QuestionMieuxVousConnaitre()
                 {
                     IdQuestion = reader.GetInt32(0),
-                    QuestionText = reader.GetString(1)
+                    QuestionText = reader.GetString(1),
+                    Position = reader.GetInt32(2)
                 };
                 mieuxVousConnaitre.Add(c);
             }

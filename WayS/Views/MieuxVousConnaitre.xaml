@@ -5,15 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="MieuxVousConnaitre" Height="920" Width="1280">
+      Title="MieuxVousConnaitre" Height="920" Width="1280" DataContext="{Binding MieuxVousConnaitrePageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
         <TextBlock Text="MIEUX VOUS CONNAITRE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
-        <TextBlock Text="{Binding QuestionText}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="36" FontWeight="Bold" Foreground="#1A130F"/>
-        <TextBlock Text="{Binding Reponses}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,400,0,0" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
-        <TextBlock Text="{Binding Reponses}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,500,0,0" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
-        <TextBlock Text="{Binding Reponses}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,600,0,0" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
-        <TextBlock Text="{Binding Reponses}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,700,0,0" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
+        <TextBlock Text="{Binding Question.QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="36" FontWeight="Bold" Foreground="#1A130F"/>
+        <TextBox x:Name="SearchTermTextBox" Text="{Binding Reponse}" Height="75" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="390,460,390,385">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
     </Grid>
 </Page>

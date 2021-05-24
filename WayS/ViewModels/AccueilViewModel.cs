@@ -5,6 +5,7 @@ using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
 using WayS.Services;
+using WayS.Views;
 
 namespace WayS.ViewModels
 {
@@ -53,7 +54,7 @@ namespace WayS.ViewModels
 
                     break;
                 case "admin":
-                    /*                    _navigationService.NavigateTo(nameof(Login));*/
+                    _navigationService.NavigateTo(nameof(Login));
                     break;
             }
         }

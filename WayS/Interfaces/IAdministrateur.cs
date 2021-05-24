@@ -1,7 +1,9 @@
-﻿namespace WayS.Interfaces
+﻿using System.Collections.Generic;
+
+namespace WayS.Interfaces
 {
     interface IAdministrateur<T>
     {
-        T FindByLogin(string login);
+        List<T> FindByLogin(string login);
     }
 }

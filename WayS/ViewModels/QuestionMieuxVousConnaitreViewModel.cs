@@ -20,6 +20,7 @@ namespace WayS.ViewModels
 
         private int idQuestion;
         private int maxQuestion;
+        private Candidat candidats;
 
         public List<QuestionMieuxVousConnaitre> ListQuestions
         {
@@ -71,10 +72,10 @@ namespace WayS.ViewModels
 
                 MessageBox.Show(Question.QuestionText.ToString());
             }
-            else
+/*            else
             {
                 _navigationService.NavigateTo(nameof(MieuxVousConnaitre));
-            }
+            }*/
         }
     }
 }

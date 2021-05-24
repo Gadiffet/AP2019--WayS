@@ -1,18 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Windows;
 using System.Windows.Input;
 using WayS.Services;
 using WayS.Views;
 
 namespace WayS.ViewModels
 {
-    class MenuViewModel : ViewModelBase
+    class MenuAdminViewModel : ViewModelBase
     {
         private IFrameNavigationService _navigationService;
 
         public ICommand NavigateCommand { get; set; }
 
-        public MenuViewModel(IFrameNavigationService navigationService)
+        public MenuAdminViewModel(IFrameNavigationService navigationService)
         {
             _navigationService = navigationService;
             NavigateCommand = new RelayCommand<string>(ActionNavigate);
@@ -22,10 +23,16 @@ namespace WayS.ViewModels
             switch (page)
             {
                 case "jeu":
-                    _navigationService.NavigateTo(nameof(QuestionJeu));
+                    _navigationService.NavigateTo(nameof(JeuAdmin));
                     break;
                 case "orientation":
-                    _navigationService.NavigateTo(nameof(QuestionOrientationView));
+                    _navigationService.NavigateTo(nameof(OrientationAdmin));
+                    break;
+                case "compteMessagerie":
+                    _navigationService.NavigateTo(nameof(CompteMessagerieMenu));
+                    break;
+                case "mieuxVousConnaitre":
+                    _navigationService.NavigateTo(nameof(MieuxVousConnaitreAdmin));
                     break;
             }
         }

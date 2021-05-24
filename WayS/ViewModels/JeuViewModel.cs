@@ -6,6 +6,7 @@ using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
 using WayS.Services;
+using WayS.Views;
 
 namespace WayS.ViewModels
 {
@@ -97,7 +98,7 @@ namespace WayS.ViewModels
             }
             else
             {
-                _navigationService.NavigateTo(nameof(Question));
+                _navigationService.NavigateTo(nameof(MieuxVousConnaitre));
             }
         }
     }
