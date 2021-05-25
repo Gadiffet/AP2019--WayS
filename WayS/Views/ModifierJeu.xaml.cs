@@ -3,11 +3,11 @@
 namespace WayS.Views
 {
     /// <summary>
-    /// Logique d'interaction pour ModiferOrientation.xaml
+    /// Logique d'interaction pour ModifierJeu.xaml
     /// </summary>
-    public partial class ModiferOrientation : Page
+    public partial class ModifierJeu : Page
     {
-        public ModiferOrientation()
+        public ModifierJeu()
         {
             InitializeComponent();
         }

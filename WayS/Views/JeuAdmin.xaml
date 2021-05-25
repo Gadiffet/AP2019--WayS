@@ -5,25 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="JeuAdmin" Height="920" Width="1280">
+      Title="JeuAdmin" Height="920" Width="1280" DataContext="{Binding JeuAdminPageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
         <TextBlock Text="JEU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
-        <TextBox Text="AJOUTER DES QUESTIONS" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="26,224,660,621" TextChanged="TextBox_TextChanged">
+        <Button Content="AJOUTER DES QUESTIONS" Command="{Binding JeuAdminPageInstance.AddQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="26,224,660,621"/>
+        <TextBox Text="MODIFIER ORIENTATION" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="660,224,26,621">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="30"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Text="MODIFIER CLASSEMENT" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="660,224,26,621" TextChanged="TextBox_TextChanged">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="30"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
+        <ItemsControl ItemsSource="{Binding ListQuestions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,361,0,0" RenderTransformOrigin="0.542,0.265">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Width="1200">
+                        <TextBlock Text="{Binding QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
+                        <Button Content="Modifer" Command="{Binding JeuAdminPageInstance.ModifyQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                        <Button Content="Supprimer" Command="{Binding JeuAdminPageInstance.DeleteQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="3,860,0,0" RenderTransformOrigin="0.5,0.5" >
             <Path.RenderTransform>
                 <TransformGroup>

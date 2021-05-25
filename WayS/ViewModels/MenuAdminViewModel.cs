@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Windows;
 using System.Windows.Input;
 using WayS.Services;
 using WayS.Views;

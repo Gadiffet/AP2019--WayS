@@ -7,7 +7,7 @@ namespace WayS.Repositories
 {
     class BaremeRepository : BaseRepository, IRepository<Bareme>
     {
-        public void Create(Bareme element)
+        public Bareme Create(Bareme element)
         {
             request = "INSERT INTO Candidat (pseudo, score, age, niveau, experience, localisation, hobby) OUTPUT inserted.id values (@pseudo, @score, @age, @niveau, @experience, @localisation, @hobby)";
             request = "INSERT INTO Candidat (pseudo) OUTPUT inserted.idCandidat values (@pseudo)";
@@ -17,9 +17,10 @@ namespace WayS.Repositories
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Delete(Bareme element)
+        public Bareme Delete(Bareme element)
         {
             request = "DELETE FROM Candidat where id=@id";
             connection = Connection.New;
@@ -28,9 +29,10 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Update(Bareme element)
+        public Bareme Update(Bareme element)
         {
             request = "UPDATE Candidat SET pseudo=@pseudo, score=@score WHERE id=@id";
             connection = Connection.New;
@@ -39,6 +41,7 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
         public List<Bareme> Listing()

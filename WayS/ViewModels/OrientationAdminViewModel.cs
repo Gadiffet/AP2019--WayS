@@ -1,7 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;
@@ -17,18 +18,6 @@ namespace WayS.ViewModels
         private QuestionOrientation questionOrientation;
         private QuestionOrientationRepository questionOrientationRepository;
         private List<QuestionOrientation> listQuestions;
-
-        private string questionText;
-
-        public string QuestionText
-        {
-            get => this.questionText;
-            set
-            {
-                this.questionText = value;
-                RaisePropertyChanged();
-            }
-        }
 
         public List<QuestionOrientation> ListQuestions
         {
@@ -49,6 +38,8 @@ namespace WayS.ViewModels
             }
         }
         public ICommand ModifyQuestionCommand { get; set; }
+        public ICommand DeleteQuestionCommand { get; set; }
+        public ICommand AddQuestionCommand { get; set; }
 
         public OrientationAdminViewModel(IFrameNavigationService navigationService)
         {
@@ -56,6 +47,8 @@ namespace WayS.ViewModels
             QuestionOrientation = new QuestionOrientation();
             questionOrientationRepository = new QuestionOrientationRepository();
             ModifyQuestionCommand = new RelayCommand(ModifyQuestion);
+            DeleteQuestionCommand = new RelayCommand(DeleteQuestion);
+            AddQuestionCommand = new RelayCommand(AddQuestion);
 
             listQuestions = new List<QuestionOrientation>(questionOrientationRepository.Listing());
             questionOrientation = listQuestions[0];
@@ -63,10 +56,24 @@ namespace WayS.ViewModels
 
         private void ModifyQuestion()
         {
-            MessageBox.Show(QuestionText, "Fatal Error", MessageBoxButton.OK,
-MessageBoxImage.Warning);
-            /*            listQuestions = new List<QuestionOrientation>(questionOrientationRepository.FindByQuestionText(QuestionText));
-                        _navigationService.NavigateTo(nameof(MenuAdmin));*/
+            listQuestions = new List<QuestionOrientation>(questionOrientationRepository.FindByQuestionText(QuestionOrientation.QuestionText));
+            _navigationService.NavigateTo(nameof(ModiferOrientation));
+        }
+
+        private void DeleteQuestion()
+        {
+            questionOrientationRepository.Delete(QuestionOrientation);
+        }
+
+        private void AddQuestion()
+        {
+            string newQuestionText = Interaction.InputBox("Modification en cours !", "Entrez la question", "");
+            string newPosition = Interaction.InputBox("Modification en cours !", "Entrez position", "");
+            string newBareme = Interaction.InputBox("Modification en cours !", "Entrez bareme", "");
+            QuestionOrientation.QuestionText = newQuestionText;
+            QuestionOrientation.Position = Int32.Parse(newPosition);
+            QuestionOrientation.Bareme = newBareme;
+            questionOrientationRepository.Create(QuestionOrientation);
         }
 
     }

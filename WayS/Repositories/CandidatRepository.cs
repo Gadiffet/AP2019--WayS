@@ -8,10 +8,9 @@ namespace WayS.Repositories
 {
     class CandidatRepository : BaseRepository, IRepository<Candidat>
     {
-        public void Create(Candidat element)
+        public Candidat Create(Candidat element)
         {
-            request = "INSERT INTO Candidat (pseudo, score, age, niveau, experience, localisation, hobby) OUTPUT inserted.id values (@pseudo, @score, @age, @niveau, @experience, @localisation, @hobby)";
-            request = "INSERT INTO Candidat (pseudo) OUTPUT inserted.idCandidat values (@pseudo)";
+            request = "INSERT INTO candidat (pseudo, score, age, niveau, experience, localisation, hobby) VALUES (@pseudo, @score, @age, @niveau, @experience, @localisation, @hobby)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@pseudo", element.Pseudo));
@@ -22,12 +21,13 @@ namespace WayS.Repositories
             command.Parameters.Add(new SqlParameter("@localisation", element.Localisation));
             command.Parameters.Add(new SqlParameter("@hobby", element.Hobby));
             connection.Open();
-            element.Id = (int)command.ExecuteScalar();
+            command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Delete(Candidat element)
+        public Candidat Delete(Candidat element)
         {
             request = "DELETE FROM Candidat where id=@id";
             connection = Connection.New;
@@ -36,9 +36,10 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Update(Candidat element)
+        public Candidat Update(Candidat element)
         {
             request = "UPDATE Candidat SET pseudo=@pseudo, score=@score WHERE id=@id";
             connection = Connection.New;
@@ -49,6 +50,7 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
         public List<Candidat> Listing()

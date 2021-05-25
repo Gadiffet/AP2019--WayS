@@ -1,31 +1,31 @@
-﻿<Page x:Class="WayS.Views.ModiferOrientation"
+﻿<Page x:Class="WayS.Views.ModifierMieuxVousConnaitre"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d"
-      Title="ModiferOrientation" Height="920" Width="1280" DataContext="{Binding ModifierOrientationPageInstance,Source={StaticResource Locator}}">
+      Title="ModifierMieuxVousConnaitre" Height="920" Width="1280" DataContext="{Binding ModifierMieuxVousConnaitrePageInstance,Source={StaticResource Locator}}">
 
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
-        <TextBlock Text="ORIENTATION" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
-        <TextBlock Text="{Binding QuestionOrientation.QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="36" FontWeight="Bold" Foreground="#1A130F"/>
+        <TextBlock Text="MIEUX VOUS CONNAITRE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
+        <TextBlock Text="{Binding QuestionMieuxVousConnaitre.QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="36" FontWeight="Bold" Foreground="#1A130F"/>
         <Button Content="Mod. Quest" Command="{Binding ModifyQuestionCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="844,236,186,609"/>
         <ItemsControl ItemsSource="{Binding ListReponses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,355,0,0" RenderTransformOrigin="0.542,0.265">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Width="1200" Margin="0,0,0,10">
                         <TextBlock Text="{Binding Reponse, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
-                        <Button Content="Modifier" Command="{Binding ModifierOrientationPageInstance.ModifyReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="50,0,0,0"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                        <Button Content="Modifier" Command="{Binding ModifierMieuxVousConnaitrePageInstance.ModifyReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="50,0,0,0"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
                         <TextBlock Text="{Binding NbrPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="50" VerticalAlignment="Center" Margin="50,0,0,0"  FontSize="45" Background="#EBE6E4"/>
-                        <Button Content="Mod.Score" Command="{Binding ModifierOrientationPageInstance.ModifyScoreCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
-                        <Button Content="Supprimer" Command="{Binding ModifierOrientationPageInstance.DeleteReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,0"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                        <Button Content="Mod.Score" Command="{Binding ModifierMieuxVousConnaitrePageInstance.ModifyScoreCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+                        <Button Content="Supprimer" Command="{Binding ModifierMieuxVousConnaitrePageInstance.DeleteReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,0"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Content="Ajouter Reponses" Command="{Binding ModifierOrientationPageInstance.AddReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75"  VerticalContentAlignment="Center" Margin="60,822,823,23"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
+        <Button Content="Ajouter Reponses" Command="{Binding ModifierMieuxVousConnaitrePageInstance.AddReponseCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75"  VerticalContentAlignment="Center" Margin="60,822,823,23"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
         <Button Command="{Binding NavigateCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="1191,860,0,0" />
     </Grid>

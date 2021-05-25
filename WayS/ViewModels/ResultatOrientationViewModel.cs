@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Input;
 using WayS.Models;
 using WayS.Repositories;

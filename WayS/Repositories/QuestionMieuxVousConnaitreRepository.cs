@@ -8,7 +8,7 @@ namespace WayS.Repositories
 {
     class QuestionMieuxVousConnaitreRepository : BaseRepository, IRepository<QuestionMieuxVousConnaitre>
     {
-        public void Create(QuestionMieuxVousConnaitre element)
+        public QuestionMieuxVousConnaitre Create(QuestionMieuxVousConnaitre element)
         {
             request = "INSERT INTO QuestionMieuxVousConnaitre (questionText, reponsesQuestion) OUTPUT inserted.idQuestion values (@questionText, @reponsesQuestion)";
             connection = Connection.New;
@@ -18,9 +18,10 @@ namespace WayS.Repositories
             element.IdQuestion = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Delete(QuestionMieuxVousConnaitre element)
+        public QuestionMieuxVousConnaitre Delete(QuestionMieuxVousConnaitre element)
         {
             request = "DELETE FROM QuestionMieuxVousConnaitre where idQuestionMieuxVousConnaitre=@idQuestionMieuxVousConnaitre";
             connection = Connection.New;
@@ -29,18 +30,21 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Update(QuestionMieuxVousConnaitre element)
+        public QuestionMieuxVousConnaitre Update(QuestionMieuxVousConnaitre element)
         {
-            request = "UPDATE Question SET questionText=@questionText, reponsesQuestion=@reponsesQuestion WHERE idQuestion=@idQuestion";
+            request = "UPDATE questionMieuxVousConnaitre SET questionText=@questionText WHERE idQuestionMieuxVousConnaitre=@idQuestionMieuxVousConnaitre";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@idQuestion", element.IdQuestion));
+            command.Parameters.Add(new SqlParameter("@idQuestionMieuxVousConnaitre", element.IdQuestion));
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
             connection.Open();
+            command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
         public List<QuestionMieuxVousConnaitre> Listing()
@@ -89,5 +93,31 @@ namespace WayS.Repositories
             connection.Close();
             return question;
         }
+
+        public List<QuestionMieuxVousConnaitre> FindByQuestionText(string questionText)
+        {
+            List<QuestionMieuxVousConnaitre> questionMieuxVousConnaitre = new List<QuestionMieuxVousConnaitre>();
+            request = "SELECT idQuestionMieuxVousConnaitre, questionText, position from questionMieuxVousConnaitre where questionText=@questionText";
+            connection = Connection.New;
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@questionText", questionText));
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                QuestionMieuxVousConnaitre c = new QuestionMieuxVousConnaitre()
+                {
+                    IdQuestion = reader.GetInt32(0),
+                    QuestionText = reader.GetString(1),
+                    Position = reader.GetInt32(2)
+                };
+                questionMieuxVousConnaitre.Add(c);
+            }
+            reader.Close();
+            command.Dispose();
+            connection.Close();
+            return questionMieuxVousConnaitre;
+        }
+
     }
 }

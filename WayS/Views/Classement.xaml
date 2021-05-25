@@ -5,19 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WayS.Views"
       mc:Ignorable="d" 
-      Title="Classement" Height="920" Width="1280">
+      Title="Classement" Height="920" Width="1280" DataContext="{Binding  ClassementPageInstance,Source={StaticResource Locator}}">
+
 
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
         <TextBlock Text="CLASSEMENT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" FontSize="72" FontWeight="Bold" Foreground="#00A390">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="{}{0} + {1}">
-                    <Binding Path="Pseudo" />
-                    <Binding Path="NbrPoint" />
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
+        <ItemsControl ItemsSource="{Binding ListClassement}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,434,0,0" RenderTransformOrigin="0.542,0.265">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="18" Grid.Column="0"
+                                       Text="{Binding Pseudo, UpdateSourceTrigger=PropertyChanged }" />
+                        <TextBlock FontSize="18" HorizontalAlignment="Right" Grid.Column="1"
+                                       Text="{Binding Score, UpdateSourceTrigger=PropertyChanged }" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Button Command="{Binding NavigateCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="975,860,0,0" FontSize="36" FontWeight="Bold" BorderBrush="Transparent" Background="#EBE6E4" Foreground="#00A390">CONTINUER</Button>
         <Path Stretch="Fill" Fill="#1A130F" Data="M 0 115 95 115 65 90 77 100 110 118 76 139 65 150 95 120 0 120 Z" HorizontalAlignment="Left"  Width="60" Height="60" Margin="1191,860,0,0" />
     </Grid>

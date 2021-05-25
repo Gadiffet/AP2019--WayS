@@ -8,7 +8,7 @@ namespace WayS.Repositories
 {
     class CompteMessagerieRepository : BaseRepository, IRepository<CompteMessagerie>
     {
-        public void Create(CompteMessagerie element)
+        public CompteMessagerie Create(CompteMessagerie element)
         {
             request = "INSERT INTO CompteMessagerie (adresseMail, message) OUTPUT inserted.id values (@adresseMail, @message)";
             connection = Connection.New;
@@ -19,9 +19,10 @@ namespace WayS.Repositories
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Delete(CompteMessagerie element)
+        public CompteMessagerie Delete(CompteMessagerie element)
         {
             request = "DELETE FROM CompteMessagerie where id=@id";
             connection = Connection.New;
@@ -30,9 +31,10 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Update(CompteMessagerie element)
+        public CompteMessagerie Update(CompteMessagerie element)
         {
             request = "UPDATE CompteMessagerie SET adresseMail=@adresseMail, message=@message WHERE id=@id";
             connection = Connection.New;
@@ -43,6 +45,7 @@ namespace WayS.Repositories
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
         public List<CompteMessagerie> Listing()
@@ -93,5 +96,30 @@ namespace WayS.Repositories
             connection.Close();
             return compteMessagerie;
         }
+
+        public CompteMessagerie FindParameterByAdress(string adresse)
+        {
+            CompteMessagerie compteMessagerie = null;
+            request = "SELECT adresseMail, message from compteMessageire where adresseMail = @adresseMail";
+            connection = Connection.New;
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@adresseMail", adresse));
+            connection.Open();
+            reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                compteMessagerie = new CompteMessagerie()
+                {
+                    AdresseMail = reader.GetString(0),
+                    Message = reader.GetString(1)
+                };
+
+            }
+            reader.Close();
+            command.Dispose();
+            connection.Close();
+            return compteMessagerie;
+        }
+
     }
 }

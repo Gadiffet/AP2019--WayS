@@ -10,13 +10,7 @@
     <Grid Background="#FFEBE6E4">
         <Rectangle Height="200" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#1A130F" RenderTransformOrigin="-8.147,1.457"/>
         <TextBlock Text="ORIENTATION" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,57,0,0" FontSize="64" FontWeight="Bold" Foreground="#EBE6E4"/>
-        <TextBox Text="AJOUTER DES QUESTIONS" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="26,224,660,621">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="30"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
+        <Button Content="AJOUTER DES QUESTIONS" Command="{Binding OrientationAdminPageInstance.AddQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="26,224,660,621"/>
         <TextBox Text="MODIFIER ORIENTATION" Height="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390" Margin="660,224,26,621">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -28,7 +22,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Width="1200">
-                        <Button Content="{Binding QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding OrientationAdminPageInstance.ModifyQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
+                        <TextBlock Text="{Binding QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#00A390"/>
                         <Button Content="Modifer" Command="{Binding OrientationAdminPageInstance.ModifyQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
                         <Button Content="Supprimer" Command="{Binding OrientationAdminPageInstance.DeleteQuestionCommand, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" Height="75" Width="250"  VerticalContentAlignment="Center" Margin="50,0,0,10"  FontSize="45" Background="#EBE6E4" BorderThickness="3" BorderBrush="#00A390" Foreground="#00A390"/>
                     </StackPanel>

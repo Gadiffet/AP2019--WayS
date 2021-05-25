@@ -8,42 +8,47 @@ namespace WayS.Repositories
 {
     class QuestionOrientationRepository : BaseRepository, IRepository<QuestionOrientation>
     {
-        public void Create(QuestionOrientation element)
+        public QuestionOrientation Create(QuestionOrientation element)
         {
-            request = "INSERT INTO Question (questionText, reponsesQuestion, bareme) OUTPUT inserted.idQuestion values (@questionText, @reponsesQuestion)";
+            request = "INSERT INTO questionOrientation (questionText, position, bareme) VALUES (@questionText, @position, @bareme)";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
+            command.Parameters.Add(new SqlParameter("@position", element.Position));
             command.Parameters.Add(new SqlParameter("@bareme", element.Bareme));
             connection.Open();
-            element.IdQuestion = (int)command.ExecuteScalar();
+            command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Delete(QuestionOrientation element)
+        public QuestionOrientation Delete(QuestionOrientation element)
         {
-            request = "DELETE FROM Question where idQuestion=@idQuestion";
+            request = "DELETE FROM questionOrientation where idQuestionOrientation=@idQuestion";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@idQuestion", element.IdQuestion));
             connection.Open();
             command.Dispose();
             connection.Close();
+            return element;
         }
 
-        public void Update(QuestionOrientation element)
+        public QuestionOrientation Update(QuestionOrientation element)
         {
-            request = "UPDATE Question SET questionText=@questionText, reponsesQuestion=@reponsesQuestion, bareme=@bareme WHERE idQuestion=@idQuestion";
+            request = "UPDATE questionOrientation SET questionText=@questionText WHERE idQuestionOrientation=@idQuestionOrientation";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
-            command.Parameters.Add(new SqlParameter("@idQuestion", element.IdQuestion));
+            command.Parameters.Add(new SqlParameter("@idQuestionOrientation", element.IdQuestion));
             command.Parameters.Add(new SqlParameter("@questionText", element.QuestionText));
-            command.Parameters.Add(new SqlParameter("@bareme", element.Bareme));
             connection.Open();
+            command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
+            return element;
         }
+
 
         public List<QuestionOrientation> Listing()
         {

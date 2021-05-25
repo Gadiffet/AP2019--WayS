@@ -28,6 +28,12 @@ namespace WayS.ViewModels
             SimpleIoc.Default.Register<MenuAdminViewModel>();
             SimpleIoc.Default.Register<OrientationAdminViewModel>();
             SimpleIoc.Default.Register<ModifierOrientationViewModel>();
+            SimpleIoc.Default.Register<JeuAdminViewModel>();
+            SimpleIoc.Default.Register<ModifierJeuViewModel>();
+            SimpleIoc.Default.Register<MieuxVousConnaitreAdminViewModel>();
+            SimpleIoc.Default.Register<ModifierMieuxVousConnaitreViewModel>();
+            SimpleIoc.Default.Register<ResultatJeuViewModel>();
+            SimpleIoc.Default.Register<ClassementViewModel>();
         }
 
         private static void SetupNavigation()
@@ -43,6 +49,13 @@ namespace WayS.ViewModels
             navigationService.Configure(nameof(MenuAdmin), new Uri("../Views/MenuAdmin.xaml", UriKind.Relative));
             navigationService.Configure(nameof(OrientationAdmin), new Uri("../Views/OrientationAdmin.xaml", UriKind.Relative));
             navigationService.Configure(nameof(ModiferOrientation), new Uri("../Views/ModiferOrientation.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(JeuAdmin), new Uri("../Views/JeuAdmin.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(ModifierJeu), new Uri("../Views/ModifierJeu.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(MieuxVousConnaitreAdmin), new Uri("../Views/MieuxVousConnaitreAdmin.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(ModifierMieuxVousConnaitre), new Uri("../Views/ModifierMieuxVousConnaitre.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(ResultatJeu), new Uri("../Views/ResultatJeu.xaml", UriKind.Relative));
+            navigationService.Configure(nameof(Classement), new Uri("../Views/Classement.xaml", UriKind.Relative));
+
 
             SimpleIoc.Default.Register<IFrameNavigationService>(() => navigationService);
         }
@@ -138,6 +151,54 @@ namespace WayS.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<ModifierOrientationViewModel>();
+            }
+        }
+
+        public JeuAdminViewModel JeuAdminPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<JeuAdminViewModel>();
+            }
+        }
+
+        public ModifierJeuViewModel ModifierJeuPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ModifierJeuViewModel>();
+            }
+        }
+
+        public MieuxVousConnaitreAdminViewModel MieuxVousConnaitreAdminPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MieuxVousConnaitreAdminViewModel>();
+            }
+        }
+
+        public ModifierMieuxVousConnaitreViewModel ModifierMieuxVousConnaitrePageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ModifierMieuxVousConnaitreViewModel>();
+            }
+        }
+
+        public ResultatJeuViewModel ResultatJeuPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ResultatJeuViewModel>();
+            }
+        }
+
+        public ClassementViewModel ClassementPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ClassementViewModel>();
             }
         }
 

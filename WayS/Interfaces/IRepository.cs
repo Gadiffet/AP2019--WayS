@@ -4,9 +4,9 @@ namespace WayS.Interfaces
 {
     interface IRepository<T>
     {
-        void Create(T element);
-        void Update(T element);
-        void Delete(T element);
+        T Create(T element);
+        T Update(T element);
+        T Delete(T element);
         List<T> Listing();
         T FindById(int id);
     }
